@@ -6,11 +6,11 @@ import { DefaultContextMenuComponent } from '../layout-wrapper/default-context-m
   providedIn: 'root'
 })
 export class ContextMenuService {
-  public contextMenuComponent: BehaviorSubject<Type<any>> = new BehaviorSubject<Type<any>>(null);
+  public contextMenuComponent: BehaviorSubject<Type<any> | boolean> = new BehaviorSubject<Type<any> | boolean>(null);
 
   constructor() { }
 
-  public setContextMenuComponent(contextMenuComponent: Type<any>): void {
+  public setContextMenuComponent(contextMenuComponent: Type<any> | boolean): void {
     this.contextMenuComponent.next(contextMenuComponent);
   }
 

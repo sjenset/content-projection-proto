@@ -8,7 +8,7 @@ import { ContextMenuService } from './services/context-menu.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public contextMenu: Type<any> = null;
+  public contextMenu: Type<any> | boolean = null;
 
   constructor(contextMenuService: ContextMenuService) {
     contextMenuService.contextMenuComponent.subscribe(contextMenuComponent => this.contextMenu = contextMenuComponent);

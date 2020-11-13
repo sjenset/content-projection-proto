@@ -1,4 +1,4 @@
-import { Component, ComponentFactoryResolver, Input, OnChanges, SimpleChanges, Type, ViewChild, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, Component, ComponentFactoryResolver, Input, OnChanges, SimpleChanges, Type, ViewChild, ViewContainerRef } from '@angular/core';
 
 import { DefaultContextMenuComponent } from './default-context-menu/default-context-menu.component';
 
@@ -7,30 +7,49 @@ import { DefaultContextMenuComponent } from './default-context-menu/default-cont
   templateUrl: './layout-wrapper.component.html',
   styleUrls: ['./layout-wrapper.component.scss']
 })
-export class LayoutWrapperComponent implements OnChanges {
+export class LayoutWrapperComponent implements AfterViewInit, OnChanges {
   @Input() contextMenuComponent: Type<any>;
   @ViewChild('ContextMenu', { read: ViewContainerRef }) contextMenuContainer: ViewContainerRef;
+
+  private contextMenu: Type<any> = DefaultContextMenuComponent;
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver) { }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.contextMenuComponent) {
-      this.setContextMenu(changes.contextMenuComponent.currentValue);
+      switch (changes.contextMenuComponent.currentValue) {
+        case null:
+        case true:
+          this.contextMenu = DefaultContextMenuComponent;
+          break;
+        case false:
+          this.contextMenu = null;
+          break;
+        default:
+          this.contextMenu = changes.contextMenuComponent.currentValue;
+          break;
+      }
+
+      this.setContextMenu();
     }
   }
 
-  private setContextMenu(contextMenu: Type<any> = DefaultContextMenuComponent): void {
+  ngAfterViewInit(): void {
+    this.setContextMenu();
+  }
+
+  private setContextMenu(): void {
     if (!this.contextMenuContainer) {
       return;
     }
     if (this.contextMenuContainer.length) {
       this.contextMenuContainer.remove(0);
     }
-    if (!contextMenu) {
+    if (!this.contextMenu) {
       return;
     }
     try {
-      const factory = this.componentFactoryResolver.resolveComponentFactory(contextMenu);
+      const factory = this.componentFactoryResolver.resolveComponentFactory(this.contextMenu);
 
       this.contextMenuContainer.createComponent(factory);
     } catch (error) {

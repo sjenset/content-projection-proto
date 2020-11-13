@@ -5,7 +5,7 @@ import { HomeActivator } from './home.activator';
 import { HomeComponent } from './home.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, canActivate: [HomeActivator] }
+  { path: '', component: HomeComponent, canActivate: [HomeActivator], canDeactivate: [HomeActivator] }
 ];
 
 @NgModule({
