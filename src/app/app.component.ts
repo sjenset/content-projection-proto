@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Type } from '@angular/core';
+
+import { ContextMenuService } from './services/context-menu.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'content-projection-proto';
+  public contextMenu: Type<any> = null;
+
+  constructor(contextMenuService: ContextMenuService) {
+    contextMenuService.contextMenuComponent.subscribe(contextMenuComponent => this.contextMenu = contextMenuComponent);
+  }
 }
