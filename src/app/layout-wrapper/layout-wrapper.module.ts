@@ -15,6 +15,7 @@ import { LayoutWrapperComponent } from './layout-wrapper.component';
   exports: [
     LayoutWrapperComponent,
     DefaultContextMenuComponent
-  ]
+  ],
+  bootstrap: [DefaultContextMenuComponent]
 })
 export class LayoutWrapperModule { }
