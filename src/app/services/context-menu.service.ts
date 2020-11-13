@@ -1,6 +1,6 @@
 import { Injectable, Type } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { DefaultContextMenuComponent } from 'src/app/layout-wrapper/default-context-menu/default-context-menu.component';
+import { DefaultContextMenuComponent } from '../layout-wrapper/default-context-menu/default-context-menu.component';
 
 @Injectable({
   providedIn: 'root'

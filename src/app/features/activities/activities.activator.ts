@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, CanDeactivate, RouterStateSnapshot } from '@angular/router';
 
-import { DefaultContextMenuComponent } from 'src/app/layout-wrapper/default-context-menu/default-context-menu.component';
-import { ContextMenuService } from 'src/app/services/context-menu.service';
+import { DefaultContextMenuComponent } from '../../layout-wrapper/default-context-menu/default-context-menu.component';
+import { ContextMenuService } from '../../services/context-menu.service';
 
 @Injectable()
 export class ActivitiesActivator implements CanActivate, CanDeactivate<any> {
