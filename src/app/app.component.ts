@@ -11,16 +11,16 @@ export class AppComponent {
   public contextMenuComponent$ = null;
   public menuItems = [
     {
-      'text': 'Forside',
-      'url': '/'
+      text: 'Forside',
+      url: '/'
     },
     {
-      'text': 'Aktivitetsoversikt',
-      'url': '/activities'
+      text: 'Aktivitetsoversikt',
+      url: '/activities'
     },
     {
-      'text': 'Mitt Arbeidsbord',
-      'url': '/workitems'
+      text: 'Mitt Arbeidsbord',
+      url: '/workitems'
     }
   ];
 
