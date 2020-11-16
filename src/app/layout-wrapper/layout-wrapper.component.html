@@ -1,5 +1,17 @@
 <section class="lc-layout">
   <h2>Jeg er LC Layout og holder styr på alt</h2>
-  <ng-content></ng-content>
-  <ng-template #ContextMenu></ng-template>
+  <p>Bl.a. denne menyen, basert på inputs</p>
+  <nav *ngIf="menuItems.length">
+    <ul>
+      <li *ngFor="let menuItem of menuItems">
+        <a [routerLink]="menuItem.url">{{ menuItem.text }}</a>
+      </li>
+    </ul>
+  </nav>
+  <p>Og innholdet som kommer under her</p>
+  <section class="lc-content">
+    <h3>Dette innholdet er content-projected</h3>
+    <ng-content></ng-content>
+    <ng-template #ContextMenu></ng-template>
+  </section>
 </section>

@@ -1,19 +1,7 @@
 <section class="lcrs">
   <h1>LC Ressursstyring</h1>
-  <nav>
-    <ul>
-      <li>
-        <a routerLink="/home">Forside</a>
-      </li>
-      <li>
-        <a routerLink="/activities">Aktivtetsoversikt</a>
-      </li>
-      <li>
-        <a routerLink="/workitems">Mitt Arbeidsbord</a>
-      </li>
-    </ul>
-  </nav>
-  <app-layout-wrapper [contextMenuComponent]="contextMenu">
+  <p>Jeg styrer showet, men jeg lar LC Layout ta seg av bl.a. meny og hvor innholdet skal vises. Jeg kan dog overstyre kontekst-menyen!</p>
+  <app-layout-wrapper [contextMenuComponent]="contextMenuComponent$ | async" [menuItems]="menuItems">
     <router-outlet></router-outlet>
   </app-layout-wrapper>
 </section>

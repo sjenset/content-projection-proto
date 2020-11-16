@@ -9,6 +9,7 @@ import { DefaultContextMenuComponent } from './default-context-menu/default-cont
 })
 export class LayoutWrapperComponent implements AfterViewInit, OnChanges {
   @Input() contextMenuComponent: Type<any>;
+  @Input() menuItems: any[];
   @ViewChild('ContextMenu', { read: ViewContainerRef }) contextMenuContainer: ViewContainerRef;
 
   private contextMenu: Type<any> = DefaultContextMenuComponent;

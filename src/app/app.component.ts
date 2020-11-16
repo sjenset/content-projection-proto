@@ -8,9 +8,23 @@ import { ContextMenuService } from './services/context-menu.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public contextMenu: Type<any> | boolean = null;
+  public contextMenuComponent$ = null;
+  public menuItems = [
+    {
+      'text': 'Forside',
+      'url': '/'
+    },
+    {
+      'text': 'Aktivitetsoversikt',
+      'url': '/activities'
+    },
+    {
+      'text': 'Mitt Arbeidsbord',
+      'url': '/workitems'
+    }
+  ];
 
   constructor(contextMenuService: ContextMenuService) {
-    contextMenuService.contextMenuComponent.subscribe(contextMenuComponent => this.contextMenu = contextMenuComponent);
+    this.contextMenuComponent$ = contextMenuService.contextMenuComponent;
   }
 }

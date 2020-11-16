@@ -1,4 +1,12 @@
-.lc-layout {
+.lc-layout,
+.lc-content {
   padding: 16px;
+}
+
+.lc-layout {
   border: 1px dashed black;
+}
+
+.lc-content {
+  border: 1px dotted black;
 }
